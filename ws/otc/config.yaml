@@ -1,0 +1,2 @@
+package: otcws
+output: client.gen.go

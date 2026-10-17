@@ -1,0 +1,22 @@
+{
+  "name": "go-btse",
+  "version": "0.1.0",
+  "description": "Unofficial Go client for BTSE: spot, futures, market data, wallets, earn and OTC, generated from the public API specifications.",
+  "author": {
+    "name": "psyb0t",
+    "url": "https://github.com/psyb0t"
+  },
+  "homepage": "https://github.com/psyb0t/go-btse",
+  "repository": "https://github.com/psyb0t/go-btse",
+  "license": "MIT",
+  "keywords": [
+    "btse",
+    "exchange",
+    "trading",
+    "api-client",
+    "go-library",
+    "openapi",
+    "asyncapi"
+  ],
+  "skills": "./skills/"
+}

@@ -1,0 +1,10 @@
+package: futuresws
+output: client.gen.go
+output-options:
+  message-matchers:
+    receivePongreceivePong:
+      "": pong
+    receiveOrderbookUpdateOrderbookSnapshot:
+      /data/type: snapshot
+    receiveOrderbookUpdateOrderbookDelta:
+      /data/type: delta
