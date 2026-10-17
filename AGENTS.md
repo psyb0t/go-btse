@@ -49,7 +49,6 @@ make sec       # gitleaks, govulncheck, semgrep
 - Method names come from each spec's operation IDs. Identical names in different products belong to different packages.
 - `make generate` downloads current specs. Review its output when upstream changes.
 - Tests use local HTTP servers and WebSocket fixtures. They never call BTSE.
-- This workspace task permits no Git or GitHub mutations and publishes nothing.
 - `.github/workflows/regen.yml` regenerates the client every day and releases the result. When the checks fail, Claude edits the repository to fix them, but a fix may not touch the paths listed under `fix_protected_paths` in that workflow: the workflows, the Makefile, `AGENTS.md`, `.agents/rules/`, the lint, security and spec download scripts and their configs. A problem that needs a change there fails the run and needs a manual fix.
 
 ## Rules

@@ -1,6 +1,6 @@
 {
   "name": "go-btse",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Unofficial Go client for BTSE: spot, futures, market data, wallets, earn and OTC, generated from the public API specifications.",
   "author": {
     "name": "psyb0t",

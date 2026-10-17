@@ -61,6 +61,8 @@ func main() {
 
 The same code is in `example_test.go`, so `make test` checks that it compiles. Check `StatusCode()` and the decoded response field before using a result. An API rejection can return a nil Go error.
 
+The full API, including every product and WebSocket package, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-btse); after `go get`, `go doc github.com/psyb0t/go-btse` prints the spot package locally.
+
 ## Auth
 
 BTSE private endpoints require `request-api` (API key), `request-nonce` (milliseconds) and `request-sign` (hex HMAC-SHA384). The signature input is the API path, nonce and exact body bytes concatenated, without the query string. `btseauth.NewSigner` supplies these headers through the generated `RequestEditorFn` interface, as shown above. The signer strips the `/spot` or `/futures` service prefix before `/api/` when signing. Public market data works without a signer.
