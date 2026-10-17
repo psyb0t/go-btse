@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.1, 2026-10-17
+
+- Generated doc comments keep BTSE's own description text. The REST clients now generate from the downloaded specs unchanged, and the WebSocket converter no longer rewrites dashes in descriptions. The `patch-spec` tool and `internal/specprose` are removed.
+- `make sec` uses Semgrep 1.181.0. Its pinned requirements now hash every published file, so the development image also builds on arm64.
+
 ## v0.1.0, 2026-10-17
 
 - Added REST clients generated with oapi-codegen from BTSE's OpenAPI 3.0.3 documents at `https://docs.btse.com/specs/{product}-rest.openapi.yaml`: spot and earn spec version 3.3.0, futures 2.3.0, and markets, wallet and OTC 1.0.0. Each complete spec has its own package.

@@ -18,13 +18,13 @@ import (
 
 // Server URLs, with any server variables at their defaults.
 const (
-	// Production. Main WebSocket (trades, auth, notifications)
+	// Production — Main WebSocket (trades, auth, notifications)
 	ServerMainProductionURL = "wss://ws.btse.com/ws/futures"
-	// Testnet. Main WebSocket
+	// Testnet — Main WebSocket
 	ServerMainTestnetURL = "wss://testws.btse.io/ws/futures"
-	// Production. Order Stream Service (orderbook data)
+	// Production — Order Stream Service (orderbook data)
 	ServerOssProductionURL = "wss://ws.btse.com/ws/oss/futures"
-	// Testnet. Order Stream Service
+	// Testnet — Order Stream Service
 	ServerOssTestnetURL = "wss://testws.btse.io/ws/oss/futures"
 )
 
@@ -84,7 +84,7 @@ const PositionsV3AddressTemplate = "positionsV3"
 // before performing arithmetic.
 //
 // Because every push is a full snapshot, clients can simply overwrite the local copy on each
-// message. there is no sequence number, and no delta merging is required. If the connection
+// message — there is no sequence number, and no delta merging is required. If the connection
 // drops, re-subscribe to the topic to resume receiving updates.
 const SnapshotL1SymbolAddressTemplate = "snapshotL1:{symbol}"
 
@@ -103,7 +103,7 @@ const SubscriptionAddressTemplate = "subscription"
 // TradeHistoryAPIV3SymbolAddressTemplate is the address of the TradeHistoryAPIV3Symbol channel with its parameters unfilled.
 //
 // Real-time public trade feed for a market.
-// **Topic:** `tradeHistoryApiV3:<symbol>`. no authentication required.
+// **Topic:** `tradeHistoryApiV3:<symbol>` — no authentication required.
 const TradeHistoryAPIV3SymbolAddressTemplate = "tradeHistoryApiV3:{symbol}"
 
 // TradeHistoryAPIV3SymbolAddress returns the address of the TradeHistoryAPIV3Symbol channel with its parameters filled in.
@@ -264,7 +264,7 @@ func (v ReceiveAllPositionsreceiveAllPositionsPayloadDataItem) Validate() error 
 type AuthRequest struct {
 	// [API_KEY, NONCE, HMAC-SHA384_SIGNATURE]
 	Args []string `json:"args"`
-	// Operation. fixed value `authKeyExpires`
+	// Operation — fixed value `authKeyExpires`
 	Op string `json:"op"`
 }
 
@@ -1024,7 +1024,7 @@ type ReceiveOrderbookUpdateOrderbookDeltaPayloadData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType `json:"type,omitempty"`
 }
 
@@ -1058,7 +1058,7 @@ func (v ReceiveOrderbookUpdateOrderbookDeltaPayloadData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType string
 
 // Values of ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType.
@@ -1133,7 +1133,7 @@ type ReceiveOrderbookUpdateOrderbookSnapshotPayloadData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType `json:"type,omitempty"`
 }
 
@@ -1167,7 +1167,7 @@ func (v ReceiveOrderbookUpdateOrderbookSnapshotPayloadData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType string
 
 // Values of ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType.
@@ -1472,7 +1472,7 @@ type OrderbookUpdateSchemaData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *OrderbookUpdateSchemaDataType `json:"type,omitempty"`
 }
 
@@ -1506,7 +1506,7 @@ func (v OrderbookUpdateSchemaData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type OrderbookUpdateSchemaDataType string
 
 // Values of OrderbookUpdateSchemaDataType.

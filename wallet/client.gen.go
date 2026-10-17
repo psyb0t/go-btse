@@ -354,7 +354,7 @@ type CreateAddressRequest struct {
 	// Network Crypto network
 	Network string `json:"network"`
 
-	// WebhookUrl If you want to receive notifications, fill in the 'webhookUrl' parameter. Then, notify BTSE so BTSE can whitelist the 'webhookUrl'.
+	// WebhookUrl If you want to receive notifications, fill in the 'webhookUrl' parameter. Then, notify us so we can whitelist the 'webhookUrl'.
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 
@@ -741,7 +741,7 @@ type WithdrawRequest struct {
 	// Network Crypto network to withdraw
 	Network string `json:"network"`
 
-	// WebhookUrl If you wish to receive notifications, please fill in the 'webhookUrl' parameter. Also, kindly notify BTSE so that BTSE can add the 'webhookUrl' to the whitelist.
+	// WebhookUrl If you wish to receive notifications, please fill in the 'webhookUrl' parameter. Also, kindly notify us so that we can add the 'webhookUrl' to the whitelist.
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 

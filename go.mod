@@ -7,7 +7,6 @@ tool (
 	github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen
 	github.com/psyb0t/gen-asyncapi/cmd/gen-asyncapi
 	github.com/psyb0t/go-btse/internal/cmd/convert-asyncapi
-	github.com/psyb0t/go-btse/internal/cmd/patch-spec
 )
 
 require (

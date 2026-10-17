@@ -249,7 +249,7 @@ type CreateOrderRequest struct {
 	// Deviation PEG orders: deviation from index price (-10 to 10)
 	Deviation *float64 `json:"deviation,omitempty"`
 
-	// PostOnly Post-only order. charged maker fees
+	// PostOnly Post-only order — charged maker fees
 	PostOnly *bool `json:"postOnly,omitempty"`
 
 	// Price Required for LIMIT orders. For MARKET BUY, this is the max total amount (quote currency) willing to spend. Not applicable for MARKET SELL
@@ -589,7 +589,7 @@ type GetOpenOrdersParams struct {
 
 // GetUserTradesFillsParams defines parameters for GetUserTradesFills.
 type GetUserTradesFillsParams struct {
-	// Symbol Market symbol. Optional. if omitted, returns trades across all symbols.
+	// Symbol Market symbol. Optional — if omitted, returns trades across all symbols.
 	Symbol *string `form:"symbol,omitempty" json:"symbol,omitempty"`
 
 	// StartTime Starting time in milliseconds

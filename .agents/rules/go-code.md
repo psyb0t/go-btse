@@ -3,7 +3,7 @@
 Refines `~/.claude/rule-details/go/wrapping-errors.md` and `~/.claude/rule-details/coding-style.md`.
 
 - **GO1** Every `*.gen.go` file is generated. Change its config or input patch, then run `make generate`.
-- **GO2** Spec patches run from `scripts/` before generation. YAML tools live under `internal/cmd/`. REST patches normalize prose. WebSocket conversion upgrades AsyncAPI 2.6 and repairs provider schema placement and message matching. Each patch states its purpose.
+- **GO2** Spec patches run from `scripts/` before generation. YAML tools live under `internal/cmd/`. The REST specs need no patch. WebSocket conversion upgrades AsyncAPI 2.6 and repairs provider schema placement and message matching. Each patch states its purpose.
 - **GO3** The downloaded spec in `api/` is gitignored and never committed.
 - **GO4** Number fields stay `float64` through the `type-mapping` in `config.yaml`. Money in `float32` loses precision.
 - **GO5** Hand-written Go (`gen.go` and the tests) wraps errors with `ctxerrors.Wrap` against `ctxerrors/commerr` sentinels. No `fmt.Errorf`, no `errors.New` outside a sentinel declaration.

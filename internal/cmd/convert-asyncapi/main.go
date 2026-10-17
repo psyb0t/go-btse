@@ -13,7 +13,6 @@ import (
 	"github.com/psyb0t/ctxerrors"
 	"github.com/psyb0t/ctxerrors/commerr"
 	"github.com/psyb0t/go-btse/internal/specfile"
-	"github.com/psyb0t/go-btse/internal/specprose"
 	"gopkg.in/yaml.v3"
 )
 
@@ -53,7 +52,6 @@ func run(args []string) error {
 	}
 
 	convert(document)
-	specprose.Normalize(document)
 
 	encoded, err := json.MarshalIndent(document, "", "  ")
 	if err != nil {

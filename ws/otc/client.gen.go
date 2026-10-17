@@ -47,10 +47,10 @@ const AuthAddressTemplate = "auth"
 // To **accept** a quote, use the `buyQuoteId` or `sellQuoteId` from the stream
 // with the Accept Quote REST endpoint.
 //
-// **REST vs WebSocket. when to use which:**
-//   - **REST `POST /public-api/otc/v1/quotes`**. request a single quote with a 5-second TTL.
+// **REST vs WebSocket — when to use which:**
+//   - **REST `POST /public-api/otc/v1/quotes`** — request a single quote with a 5-second TTL.
 //     This is the standard one-shot RFQ workflow.
-//   - **WebSocket `quote` stream (this channel)**. subscribe to a continuous price feed
+//   - **WebSocket `quote` stream (this channel)** — subscribe to a continuous price feed
 //     for high-frequency consumers. Independent of the REST RFQ.
 //
 // **Subscribe payload differs from spot/futures.** OTC uses `op: quote` with a top-level
@@ -62,7 +62,7 @@ const AuthAddressTemplate = "auth"
 // // ✅ OTC subscribe
 // { "op": "quote", "symbol": "BTC-USD", "quantity": { "quantity": 1, "currency": "BTC" } }
 //
-// // ❌ Spot/futures style. does NOT work for OTC
+// // ❌ Spot/futures style — does NOT work for OTC
 // { "op": "subscribe", "args": ["quote"] }
 // ```
 //
@@ -75,7 +75,7 @@ const QuoteAddressTemplate = "quote"
 type AuthRequest struct {
 	// [API_KEY, NONCE, HMAC-SHA384_SIGNATURE]
 	Args []string `json:"args"`
-	// Operation. fixed value `authKeyExpires`
+	// Operation — fixed value `authKeyExpires`
 	Op string `json:"op"`
 }
 

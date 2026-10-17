@@ -338,7 +338,7 @@ type ClientInterface interface {
 	//
 	// Request a quote for an OTC order. Requires the `Trading` permission.
 	//
-	// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+	// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 	//
 	// > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 	//
@@ -351,7 +351,7 @@ type ClientInterface interface {
 	//
 	// Request a quote for an OTC order. Requires the `Trading` permission.
 	//
-	// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+	// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 	//
 	// > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 	//
@@ -444,7 +444,7 @@ func (c *Client) GetQuote(ctx context.Context, params *GetQuoteParams, reqEditor
 //
 // Request a quote for an OTC order. Requires the `Trading` permission.
 //
-// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 //
 // > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 //
@@ -467,7 +467,7 @@ func (c *Client) RequestQuoteWithBody(ctx context.Context, contentType string, b
 //
 // Request a quote for an OTC order. Requires the `Trading` permission.
 //
-// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 //
 // > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 //
@@ -774,7 +774,7 @@ type ClientWithResponsesInterface interface {
 	//
 	// Request a quote for an OTC order. Requires the `Trading` permission.
 	//
-	// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+	// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 	//
 	// > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 	//
@@ -787,7 +787,7 @@ type ClientWithResponsesInterface interface {
 	//
 	// Request a quote for an OTC order. Requires the `Trading` permission.
 	//
-	// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+	// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 	//
 	// > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 	//
@@ -1110,7 +1110,7 @@ func (c *ClientWithResponses) GetQuoteWithResponse(ctx context.Context, params *
 //
 // Request a quote for an OTC order. Requires the `Trading` permission.
 //
-// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 //
 // > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 //
@@ -1129,7 +1129,7 @@ func (c *ClientWithResponses) RequestQuoteWithBodyWithResponse(ctx context.Conte
 //
 // Request a quote for an OTC order. Requires the `Trading` permission.
 //
-// Choose either `baseSize` or `quoteSize` to submit. these two parameters cannot be sent at the same time.
+// Choose either `baseSize` or `quoteSize` to submit — these two parameters cannot be sent at the same time.
 //
 // > **Important:** A new quote expires after **6 seconds**. Accept it before expiry.
 //

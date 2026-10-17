@@ -18,13 +18,13 @@ import (
 
 // Server URLs, with any server variables at their defaults.
 const (
-	// Production. Main WebSocket (trades, auth, notifications)
+	// Production — Main WebSocket (trades, auth, notifications)
 	ServerMainProductionURL = "wss://ws.btse.com/ws/spot"
-	// Testnet. Main WebSocket
+	// Testnet — Main WebSocket
 	ServerMainTestnetURL = "wss://testws.btse.io/ws/spot"
-	// Production. Order Stream Service (orderbook data)
+	// Production — Order Stream Service (orderbook data)
 	ServerOssProductionURL = "wss://ws.btse.com/ws/oss/spot"
-	// Testnet. Order Stream Service
+	// Testnet — Order Stream Service
 	ServerOssTestnetURL = "wss://testws.btse.io/ws/oss/spot"
 )
 
@@ -70,7 +70,7 @@ const PingAddressTemplate = "ping"
 // before performing arithmetic.
 //
 // Because every push is a full snapshot, clients can simply overwrite the local copy on each
-// message. there is no sequence number, and no delta merging is required. If the connection
+// message — there is no sequence number, and no delta merging is required. If the connection
 // drops, re-subscribe to the topic to resume receiving updates.
 const SnapshotL1SymbolAddressTemplate = "snapshotL1:{symbol}"
 
@@ -89,7 +89,7 @@ const SubscriptionAddressTemplate = "subscription"
 // TradeHistoryAPISymbolAddressTemplate is the address of the TradeHistoryAPISymbol channel with its parameters unfilled.
 //
 // Real-time public trade feed for a market.
-// **Topic:** `tradeHistoryApi:<symbol>`. no authentication required.
+// **Topic:** `tradeHistoryApi:<symbol>` — no authentication required.
 const TradeHistoryAPISymbolAddressTemplate = "tradeHistoryApi:{symbol}"
 
 // TradeHistoryAPISymbolAddress returns the address of the TradeHistoryAPISymbol channel with its parameters filled in.
@@ -137,7 +137,7 @@ func UpdateSymbolGroupingAddress(grouping, symbol string) string {
 type AuthRequest struct {
 	// [API_KEY, NONCE, HMAC-SHA384_SIGNATURE]
 	Args []string `json:"args"`
-	// Operation. fixed value `authKeyExpires`
+	// Operation — fixed value `authKeyExpires`
 	Op string `json:"op"`
 }
 
@@ -357,7 +357,7 @@ type ReceiveNotificationsreceiveNotificationsPayloadData struct {
 	OrderCurrency *string `json:"orderCurrency,omitempty"`
 	// Internal order ID
 	OrderID *string `json:"orderID,omitempty"`
-	// Order classification. `76`: Limit · `77`: Market · `80`: Peg/Algo
+	// Order classification — `76`: Limit · `77`: Market · `80`: Peg/Algo
 	OrderType *int64 `json:"orderType,omitempty"`
 	// Manual (true) vs. automated (false) order origin
 	OrderUserInitiated *bool `json:"orderUserInitiated,omitempty"`
@@ -377,7 +377,7 @@ type ReceiveNotificationsreceiveNotificationsPayloadData struct {
 	RemainingQuoteSize *float64 `json:"remainingQuoteSize,omitempty"`
 	// Trade direction (BUY or SELL)
 	Side *string `json:"side,omitempty"`
-	// Current order state. `1` (MARKET_UNAVAILABLE) · `2` (ORDER_INSERTED) · `4` (ORDER_FULLY_TRANSACTED) · `5` (ORDER_PARTIALLY_TRANSACTED) · `6` (ORDER_CANCELLED) · `8` (INSUFFICIENT_BALANCE) · `9` (TRIGGER_INSERTED) · `10` (TRIGGER_ACTIVATED) · `12` (ERROR_UPDATE_RISK_LIMIT) · `15` (ORDER_REJECTED) · `27` (TRANSFER_SUCCESSFUL) · `28` (TRANSFER_UNSUCCESSFUL) · `41` (ERROR_INVALID_RISK_LIMIT) · `64` (STATUS_LIQUIDATION) · `101` (FUTURES_ORDER_PRICE_OUTSIDE_LIQUIDATION_PRICE) · `1003` (ORDER_LIQUIDATION) · `1004` (ORDER_ADL)
+	// Current order state — `1` (MARKET_UNAVAILABLE) · `2` (ORDER_INSERTED) · `4` (ORDER_FULLY_TRANSACTED) · `5` (ORDER_PARTIALLY_TRANSACTED) · `6` (ORDER_CANCELLED) · `8` (INSUFFICIENT_BALANCE) · `9` (TRIGGER_INSERTED) · `10` (TRIGGER_ACTIVATED) · `12` (ERROR_UPDATE_RISK_LIMIT) · `15` (ORDER_REJECTED) · `27` (TRANSFER_SUCCESSFUL) · `28` (TRANSFER_UNSUCCESSFUL) · `41` (ERROR_INVALID_RISK_LIMIT) · `64` (STATUS_LIQUIDATION) · `101` (FUTURES_ORDER_PRICE_OUTSIDE_LIQUIDATION_PRICE) · `1003` (ORDER_LIQUIDATION) · `1004` (ORDER_ADL)
 	Status *int64 `json:"status,omitempty"`
 	// Order visibility percentage on orderbook (Algo orders only)
 	Stealth *float64 `json:"stealth,omitempty"`
@@ -391,7 +391,7 @@ type ReceiveNotificationsreceiveNotificationsPayloadData struct {
 	TotalFilledBaseSize *float64 `json:"totalFilledBaseSize,omitempty"`
 	// Activation price for conditional orders
 	TriggerPrice *float64 `json:"triggerPrice,omitempty"`
-	// Transaction type. `0`: LIMIT · `1`: STOP · `2`: TRIGGER · `3`: OCO
+	// Transaction type — `0`: LIMIT · `1`: STOP · `2`: TRIGGER · `3`: OCO
 	TxType *int64 `json:"txType,omitempty"`
 }
 
@@ -784,7 +784,7 @@ type ReceiveOrderbookUpdateOrderbookDeltaPayloadData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType `json:"type,omitempty"`
 }
 
@@ -818,7 +818,7 @@ func (v ReceiveOrderbookUpdateOrderbookDeltaPayloadData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType string
 
 // Values of ReceiveOrderbookUpdateOrderbookDeltaPayloadDataType.
@@ -893,7 +893,7 @@ type ReceiveOrderbookUpdateOrderbookSnapshotPayloadData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType `json:"type,omitempty"`
 }
 
@@ -927,7 +927,7 @@ func (v ReceiveOrderbookUpdateOrderbookSnapshotPayloadData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType string
 
 // Values of ReceiveOrderbookUpdateOrderbookSnapshotPayloadDataType.
@@ -1020,7 +1020,7 @@ type NotificationMessageData struct {
 	OrderCurrency *string `json:"orderCurrency,omitempty"`
 	// Internal order ID
 	OrderID *string `json:"orderID,omitempty"`
-	// Order classification. `76`: Limit · `77`: Market · `80`: Peg/Algo
+	// Order classification — `76`: Limit · `77`: Market · `80`: Peg/Algo
 	OrderType *int64 `json:"orderType,omitempty"`
 	// Manual (true) vs. automated (false) order origin
 	OrderUserInitiated *bool `json:"orderUserInitiated,omitempty"`
@@ -1040,7 +1040,7 @@ type NotificationMessageData struct {
 	RemainingQuoteSize *float64 `json:"remainingQuoteSize,omitempty"`
 	// Trade direction (BUY or SELL)
 	Side *string `json:"side,omitempty"`
-	// Current order state. `1` (MARKET_UNAVAILABLE) · `2` (ORDER_INSERTED) · `4` (ORDER_FULLY_TRANSACTED) · `5` (ORDER_PARTIALLY_TRANSACTED) · `6` (ORDER_CANCELLED) · `8` (INSUFFICIENT_BALANCE) · `9` (TRIGGER_INSERTED) · `10` (TRIGGER_ACTIVATED) · `12` (ERROR_UPDATE_RISK_LIMIT) · `15` (ORDER_REJECTED) · `27` (TRANSFER_SUCCESSFUL) · `28` (TRANSFER_UNSUCCESSFUL) · `41` (ERROR_INVALID_RISK_LIMIT) · `64` (STATUS_LIQUIDATION) · `101` (FUTURES_ORDER_PRICE_OUTSIDE_LIQUIDATION_PRICE) · `1003` (ORDER_LIQUIDATION) · `1004` (ORDER_ADL)
+	// Current order state — `1` (MARKET_UNAVAILABLE) · `2` (ORDER_INSERTED) · `4` (ORDER_FULLY_TRANSACTED) · `5` (ORDER_PARTIALLY_TRANSACTED) · `6` (ORDER_CANCELLED) · `8` (INSUFFICIENT_BALANCE) · `9` (TRIGGER_INSERTED) · `10` (TRIGGER_ACTIVATED) · `12` (ERROR_UPDATE_RISK_LIMIT) · `15` (ORDER_REJECTED) · `27` (TRANSFER_SUCCESSFUL) · `28` (TRANSFER_UNSUCCESSFUL) · `41` (ERROR_INVALID_RISK_LIMIT) · `64` (STATUS_LIQUIDATION) · `101` (FUTURES_ORDER_PRICE_OUTSIDE_LIQUIDATION_PRICE) · `1003` (ORDER_LIQUIDATION) · `1004` (ORDER_ADL)
 	Status *int64 `json:"status,omitempty"`
 	// Order visibility percentage on orderbook (Algo orders only)
 	Stealth *float64 `json:"stealth,omitempty"`
@@ -1054,7 +1054,7 @@ type NotificationMessageData struct {
 	TotalFilledBaseSize *float64 `json:"totalFilledBaseSize,omitempty"`
 	// Activation price for conditional orders
 	TriggerPrice *float64 `json:"triggerPrice,omitempty"`
-	// Transaction type. `0`: LIMIT · `1`: STOP · `2`: TRIGGER · `3`: OCO
+	// Transaction type — `0`: LIMIT · `1`: STOP · `2`: TRIGGER · `3`: OCO
 	TxType *int64 `json:"txType,omitempty"`
 }
 
@@ -1132,7 +1132,7 @@ type OrderbookUpdateSchemaData struct {
 	Symbol *string `json:"symbol,omitempty"`
 	// Timestamp of the orderbook
 	Timestamp *int64 `json:"timestamp,omitempty"`
-	// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+	// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 	Type *OrderbookUpdateSchemaDataType `json:"type,omitempty"`
 }
 
@@ -1166,7 +1166,7 @@ func (v OrderbookUpdateSchemaData) Validate() error {
 	return nil
 }
 
-// `snapshot`. Snapshot of the orderbook with a maximum of 50 levels; `delta`. Updates of the orderbook
+// `snapshot` — Snapshot of the orderbook with a maximum of 50 levels; `delta` — Updates of the orderbook
 type OrderbookUpdateSchemaDataType string
 
 // Values of OrderbookUpdateSchemaDataType.

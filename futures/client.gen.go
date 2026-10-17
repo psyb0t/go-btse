@@ -579,7 +579,7 @@ type BindTpSlRequest struct {
 	// PositionMode `ONE_WAY` (default) · `HEDGE` · `ISOLATED`
 	PositionMode *BindTpSlRequestPositionMode `json:"positionMode,omitempty"`
 
-	// Side Required in HEDGE mode. closes the specified position side
+	// Side Required in HEDGE mode — closes the specified position side
 	Side BindTpSlRequestSide `json:"side"`
 
 	// StopLossPrice Stop loss trigger price. At least one of `takeProfitPrice` or `stopLossPrice` must be set
@@ -601,7 +601,7 @@ type BindTpSlRequest struct {
 // BindTpSlRequestPositionMode `ONE_WAY` (default) · `HEDGE` · `ISOLATED`
 type BindTpSlRequestPositionMode string
 
-// BindTpSlRequestSide Required in HEDGE mode. closes the specified position side
+// BindTpSlRequestSide Required in HEDGE mode — closes the specified position side
 type BindTpSlRequestSide string
 
 // BindTpSlRequestStopLossTrigger `markPrice` (default) · `lastPrice`
@@ -636,11 +636,11 @@ type ClosePositionRequest struct {
 	// Symbol Market symbol
 	Symbol string `json:"symbol"`
 
-	// Type Close type. `LIMIT` requires `price`
+	// Type Close type — `LIMIT` requires `price`
 	Type ClosePositionRequestType `json:"type"`
 }
 
-// ClosePositionRequestType Close type. `LIMIT` requires `price`
+// ClosePositionRequestType Close type — `LIMIT` requires `price`
 type ClosePositionRequestType string
 
 // CreateAlgoOrderRequest defines model for CreateAlgoOrderRequest.
@@ -684,7 +684,7 @@ type CreateOrderRequest struct {
 	// PositionMode Position mode: `ONE_WAY` (default) · `HEDGE` · `ISOLATED`
 	PositionMode *CreateOrderRequestPositionMode `json:"positionMode,omitempty"`
 
-	// PostOnly Post-only order. charged maker fee
+	// PostOnly Post-only order — charged maker fee
 	PostOnly *bool `json:"postOnly,omitempty"`
 
 	// Price Required for LIMIT orders
@@ -801,7 +801,7 @@ type FuturesOrderResponse struct {
 	// OrderType `76`: Limit · `77`: Market · `80`: Algo
 	OrderType *int `json:"orderType,omitempty"`
 
-	// OriginalOrderSize Original quantity. unchanged after amendments
+	// OriginalOrderSize Original quantity — unchanged after amendments
 	OriginalOrderSize *int `json:"originalOrderSize,omitempty"`
 
 	// PositionDirection Position direction: `LONG` · `SHORT` (only present in HEDGE/ISOLATED mode)
@@ -948,7 +948,7 @@ type LeverageUpdateResponse struct {
 	// Timestamp Update timestamp
 	Timestamp *int64 `json:"timestamp,omitempty"`
 
-	// Type `93`. indicates leverage update
+	// Type `93` — indicates leverage update
 	Type *float64 `json:"type,omitempty"`
 }
 
@@ -1140,7 +1140,7 @@ type PositionModeUpdateResponse struct {
 	// Timestamp Update timestamp
 	Timestamp *int64 `json:"timestamp,omitempty"`
 
-	// Type `129`. Futures config mode change
+	// Type `129` — Futures config mode change
 	Type *string `json:"type,omitempty"`
 }
 
@@ -1272,7 +1272,7 @@ type RiskLimitUpdateResponse struct {
 	// Timestamp Update timestamp
 	Timestamp *int64 `json:"timestamp,omitempty"`
 
-	// Type `94`. indicates risk limit update
+	// Type `94` — indicates risk limit update
 	Type *float64 `json:"type,omitempty"`
 }
 
@@ -1650,7 +1650,7 @@ type GetUnifiedWalletMarginParams struct {
 
 // GetWalletBalanceParams defines parameters for GetWalletBalance.
 type GetWalletBalanceParams struct {
-	// Wallet Wallet identifier. `CROSS@` or `ISOLATED@{symbol}-USDT` (e.g. `ISOLATED@BTC-PERP-USDT`). Optional. if omitted, returns balances across all wallets.
+	// Wallet Wallet identifier — `CROSS@` or `ISOLATED@{symbol}-USDT` (e.g. `ISOLATED@BTC-PERP-USDT`). Optional — if omitted, returns balances across all wallets.
 	Wallet *string `form:"wallet,omitempty" json:"wallet,omitempty"`
 }
 
@@ -1942,7 +1942,7 @@ type ClientInterface interface {
 
 	// CreateAlgoOrderWithBody Create New Algo Order
 	//
-	// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+	// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -1951,7 +1951,7 @@ type ClientInterface interface {
 
 	// CreateAlgoOrder Create New Algo Order
 	//
-	// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+	// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -2054,7 +2054,7 @@ type ClientInterface interface {
 	// GetWalletMargin Query Wallet Margin
 	//
 	// Returns margin information for the specified wallet.
-	// **Not available for unified wallet users**. use Query Unified Wallet Margin instead.
+	// **Not available for unified wallet users** — use Query Unified Wallet Margin instead.
 	//
 	// Corresponds with GET /api/v2.3/user/margin (the `GetWalletMargin` operationId).
 	GetWalletMargin(ctx context.Context, params *GetWalletMarginParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2454,7 +2454,7 @@ func (c *Client) ClosePosition(ctx context.Context, body ClosePositionJSONReques
 
 // CreateAlgoOrderWithBody Create New Algo Order
 //
-// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 //
 // Takes any type of body and a specified content type.
 //
@@ -2473,7 +2473,7 @@ func (c *Client) CreateAlgoOrderWithBody(ctx context.Context, contentType string
 
 // CreateAlgoOrder Create New Algo Order
 //
-// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 //
 // Takes a body of the `application/json` content type.
 //
@@ -2696,7 +2696,7 @@ func (c *Client) GetAccountFees(ctx context.Context, params *GetAccountFeesParam
 // GetWalletMargin Query Wallet Margin
 //
 // Returns margin information for the specified wallet.
-// **Not available for unified wallet users**. use Query Unified Wallet Margin instead.
+// **Not available for unified wallet users** — use Query Unified Wallet Margin instead.
 //
 // Corresponds with GET /api/v2.3/user/margin (the `GetWalletMargin` operationId).
 func (c *Client) GetWalletMargin(ctx context.Context, params *GetWalletMarginParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -4519,7 +4519,7 @@ type ClientWithResponsesInterface interface {
 
 	// CreateAlgoOrderWithBodyWithResponse Create New Algo Order
 	//
-	// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+	// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -4528,7 +4528,7 @@ type ClientWithResponsesInterface interface {
 
 	// CreateAlgoOrderWithResponse Create New Algo Order
 	//
-	// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+	// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -4637,7 +4637,7 @@ type ClientWithResponsesInterface interface {
 	// GetWalletMarginWithResponse Query Wallet Margin
 	//
 	// Returns margin information for the specified wallet.
-	// **Not available for unified wallet users**. use Query Unified Wallet Margin instead.
+	// **Not available for unified wallet users** — use Query Unified Wallet Margin instead.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -6604,7 +6604,7 @@ func (c *ClientWithResponses) ClosePositionWithResponse(ctx context.Context, bod
 
 // CreateAlgoOrderWithBodyWithResponse Create New Algo Order
 //
-// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -6619,7 +6619,7 @@ func (c *ClientWithResponses) CreateAlgoOrderWithBodyWithResponse(ctx context.Co
 
 // CreateAlgoOrderWithResponse Create New Algo Order
 //
-// Creates an algo (peg) order. price tracks market price within the specified deviation range.
+// Creates an algo (peg) order — price tracks market price within the specified deviation range.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -6800,7 +6800,7 @@ func (c *ClientWithResponses) GetAccountFeesWithResponse(ctx context.Context, pa
 // GetWalletMarginWithResponse Query Wallet Margin
 //
 // Returns margin information for the specified wallet.
-// **Not available for unified wallet users**. use Query Unified Wallet Margin instead.
+// **Not available for unified wallet users** — use Query Unified Wallet Margin instead.
 //
 // Returns a wrapper object for the known response body format(s).
 //
