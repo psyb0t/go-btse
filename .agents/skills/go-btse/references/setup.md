@@ -4,7 +4,7 @@ This module is unofficial and not affiliated with BTSE.
 
 ## Requirements
 
-- Go 1.26.9 or newer, per `go.mod`.
+- Go 1.26.10 or newer, per `go.mod`.
 - Private endpoints need an API key and secret with the permissions required by the endpoint. Read them from `BTSE_API_KEY` and `BTSE_API_SECRET` in application code.
 
 ## Install

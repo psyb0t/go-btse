@@ -10,7 +10,7 @@ The root `btse` package covers spot REST operations. Separate `futures`, `market
 
 ## Stack
 
-- Go 1.26.9.
+- Go 1.26.10.
 - oapi-codegen, pinned as a `tool` dependency in `go.mod`.
 - gen-asyncapi, pinned as a `tool` dependency in `go.mod`.
 - Runtime: `github.com/oapi-codegen/runtime`.
